@@ -1,0 +1,14 @@
+[
+    {
+        "id": "mdCarouselSlidesToDisplay",
+        "value": 1
+    },
+    {
+        "id": "smCarouselSlidesToDisplay",
+        "value": 1
+    },
+    {
+        "id": "xsCarouselSlidesToDisplay",
+        "value": 1
+    }
+]

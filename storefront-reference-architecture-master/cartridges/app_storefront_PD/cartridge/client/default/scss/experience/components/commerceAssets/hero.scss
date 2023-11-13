@@ -1,0 +1,28 @@
+.hero-img {
+    object-fit: cover;
+}
+.hero-title {
+    font-size: 5rem;
+    position: absolute;
+    top: 0;
+}
+.hero-description {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 2rem;
+}
+@media only screen and (max-width: 1024px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero {
+        height: 10rem;
+    }
+}

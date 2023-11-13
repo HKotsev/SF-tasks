@@ -1,0 +1,42 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/experience/components/commerceAssets/poularCategoryTile.css');
+    assets.addCss('/css/experience/components/commerceAssets/popularCategory.css');
+</isscript>
+<div>
+    <isif condition="${pdict.position=="top"}">
+        <div class="popular-category-link">
+            <a href="${pdict.category.url}" class="popular-category-label-a popular-cat-link"><isprint value="${pdict.category.title}" encoding="on" /></a>
+        </div>             
+    </isif>
+
+    <div class="image-cropper-tile">
+        <a href="${pdict.category.url}">
+            <div class="photo-tile-container">
+                <figure class="photo-tile-figure mb-0">
+                    <picture>
+                        <source srcset="${pdict.image.src.tablet}" media="(min-width: 768px)"/>
+                        <source srcset="${pdict.image.src.desktop}" media="(min-width: 1024px)"/>
+                        <img
+                            class="photo-tile-image image-fluid w-100"
+                            src="${pdict.image.src.mobile}"
+                            style="--focal-point-x:${pdict.image.focalPointX}; --focal-point-y:${pdict.image.focalPointY}"
+                            <isif condition="${pdict.image.alt}">alt="${pdict.image.alt}" title="${pdict.image.alt}"</isif>
+                        />
+                    </picture>
+                </figure>
+            </div>
+        </a>
+    </div>
+    <div class="d-flex justify-content-center flex-column align-items-center">
+        <div class="popular-category-link">
+            <h3><isprint value="${pdict.category.name}" encoding="on" /></h1>
+            <p><isprint value="${pdict.category.description}" encoding="on" /></p>    
+        </div>
+    </div>
+    <isif condition="${pdict.position=="bottom"}">
+        <div class="popular-category-link">
+            <a href="${pdict.category.url}" class="popular-category-label-a popular-cat-link"><isprint value="${pdict.category.title}" encoding="on" /></a>
+        </div>           
+    </isif>
+</div>

@@ -1,0 +1,29 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/experience/components/commerceAssets/hero.css');
+</isscript>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-12 p-0 ">
+            <h1 class="hero-title">
+                <isprint value="${pdict.title}" encoding="on" /> 
+            </h1>
+            <figure class="photo-tile-figure">
+                <picture>
+                    <source srcset="${pdict.image.src.tablet}" media="(min-width: 768px)"/>
+                    <source srcset="${pdict.image.src.desktop}" media="(min-width: 1024px)"/>
+                    <img
+                        class="photo-tile-image image-fluid w-100"
+                        src="${pdict.image.src.mobile}"
+                        style="--focal-point-x:${pdict.image.focalPointX}; --focal-point-y:${pdict.image.focalPointY}"
+                        <isif condition="${pdict.image.alt}">alt="${pdict.image.alt}" title="${pdict.image.alt}"</isif>
+                    />
+                </picture>
+            </figure>              
+            <div class="hero-description">
+                <isprint value="${pdict.bannerDescription}" encoding="on" />            
+                 <a href="${pdict.src}">${Resource.msg('pd.hero.check.product', 'pageDesigner', null)}</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 node_modules/
+cartridges/bm_app_storefront_base/cartridge/static/
 cartridges/app_storefront_base/cartridge/static/default/css/
 cartridges/app_storefront_base/cartridge/static/default/js/
 cartridges/app_storefront_base/cartridge/static/default/fonts/
