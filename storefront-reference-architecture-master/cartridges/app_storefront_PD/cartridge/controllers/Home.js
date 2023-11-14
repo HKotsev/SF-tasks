@@ -23,6 +23,10 @@ server.replace(
         var page = PageMgr.getPage(pageDesignerId);
 
         if (page && page.isVisible()) {
+            if (page.hasVisibilityRules()) {
+                res.cachePeriod = 0;
+                res.cachePeriodUnit = "hours";
+            }
             res.page(pageDesignerId);
         } else {
             res.render("home/homePage");

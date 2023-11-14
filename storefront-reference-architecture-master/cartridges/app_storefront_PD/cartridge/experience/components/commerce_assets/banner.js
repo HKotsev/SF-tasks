@@ -24,6 +24,11 @@ module.exports.render = function (context) {
    model.src = context.content.src;
    model.bannerDescription=context.content.description;
 
+    // instruct 24 hours relative pagecache
+    var expires = new Date();
+    expires.setDate(expires.getDate() + 1); // this handles overflow automatically
+    response.setExpires(expires);
+
  return new Template('experience/components/commerce_assets/banner').render(model).text;
 
 }
