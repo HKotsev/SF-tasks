@@ -52,6 +52,6 @@ module.exports.render = function (context, modelIn) {
     response.setExpires(expires);
 
     return new Template(
-        "experience/components/commerce_assets/categoryTileSquare"
+        "experience/components/commerce_assets/popularCategoryTile"
     ).render(model).text;
 };

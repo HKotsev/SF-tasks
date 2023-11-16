@@ -11,14 +11,12 @@ var HashMap = require('dw/util/HashMap');
  */​
 
 module.exports.render = function (context) {
-
    var model = new HashMap();
 
-
-   model.title=context.content.title;
+   model.title = context.content.title;
    model.image = ImageTransformation.getScaledImage(context.content.image);
    model.src = context.content.src;
-   model.bannerDescription=context.content.description;
+   model.bannerDescription = context.content.description;
 
     // instruct 24 hours relative pagecache
     var expires = new Date();

@@ -15,8 +15,10 @@ server.replace(
         var pageMetaHelper = require("*/cartridge/scripts/helpers/pageMetaHelper");
         var Resource = require("dw/web/Resource");
 
-        var pageDesignerId =
-            Site.current.preferences.custom.pageDesignerHomepage;
+        var pageDesignerId = Site.current.preferences.custom
+            .pageDesignerHomepage
+            ? Site.current.preferences.custom.pageDesignerHomepage
+            : "";
 
         pageMetaHelper.setPageMetaTags(req.pageMetaData, Site.current);
 

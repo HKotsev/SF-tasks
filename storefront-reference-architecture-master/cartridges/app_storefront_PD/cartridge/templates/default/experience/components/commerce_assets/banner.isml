@@ -20,7 +20,7 @@
                     />
                 </picture>
             </figure>              
-            <div class="hero-description">
+            <div class="hero-description d-flex flex-column">
                 <isprint value="${pdict.bannerDescription}" encoding="on" />            
                  <a href="${pdict.src}">${Resource.msg('pd.hero.check.product', 'pageDesigner', null)}</a>
             </div>

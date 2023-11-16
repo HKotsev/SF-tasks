@@ -3,6 +3,7 @@ var Image = require("dw/experience/image/Image");
 var MediaFile = require("dw/content/MediaFile");
 
 var base = module.superModule;
+
 var originalExports = Object.keys(module.superModule);
 originalExports.forEach(function (originalExport) {
     module.exports[originalExport] = module.superModule[originalExport];

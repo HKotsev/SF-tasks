@@ -10,7 +10,7 @@
         </div>             
     </isif>
 
-    <div class="image-cropper-tile">
+    <div class="image-cropper-tile m-auto">
         <a href="${pdict.category.url}">
             <div class="photo-tile-container">
                 <figure class="photo-tile-figure mb-0">
