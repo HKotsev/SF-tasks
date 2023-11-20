@@ -11303,6 +11303,36 @@ CityName, XX 00000 USA&lt;br /&gt;&#13;
                 &lt;/div&gt;</custom-attribute>
         </custom-attributes>
     </content>
+    
+     <content content-id="slider_image1">
+        <display-name xml:lang="x-default">Homapge slider image1</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;&lt;img alt="" src="images/gift-certificates.png?$staticlink$" title="" /&gt;&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+
+    <content content-id="slider_image2">
+        <display-name xml:lang="x-default">Homapge slider image2</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;&lt;img alt="" src="images/myaccount_addresses.png?$staticlink$" title="" /&gt;&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+
+<content content-id="product-shipping-25686514M">
+        <display-name xml:lang="x-default">Product Information</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;You product is arriving in 1 working day&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
 
     <content content-id="security-policy">
         <display-name xml:lang="x-default">Security Policy</display-name>
