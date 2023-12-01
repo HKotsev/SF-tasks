@@ -1,0 +1,43 @@
+{
+    "name": "Hero",
+    "description": "A banner.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "hero",
+            "name": "Banner Image Configuration",
+            "description": "You can define the image file, title, description, and url",
+            "attribute_definitions": [
+                {
+                    "id": "title",
+                    "name": "title",
+                    "description": "The title shown by the hero.",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "image",
+                    "name": "Banner Image",
+                    "description": "The image shown by the hero.",
+                    "type": "image",
+                    "required": true
+                },
+                {
+                    "id": "description",
+                    "name": "Banner Image Alt Text",
+                    "description": "The description shown by the hero.",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "src",
+                    "name": "url",
+                    "description": "Url",
+                    "type": "url",
+                    "required": true
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

@@ -1,0 +1,6 @@
+.image-cropper-tile {
+  max-width: 15rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+}

@@ -1,0 +1,43 @@
+{
+    "name": "Square category",
+    "description": "Square Category Tile displayed.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "popularCategory",
+            "name": "Popular Category",
+            "description": "Specify the popular Category to be Displayed.",
+            "attribute_definitions": [
+                {
+                    "id": "category",
+                    "name": "Category",
+                    "description": "Select Category to be displayed.",
+                    "type": "category",
+                    "required": true
+                },
+                {
+                    "id": "title",
+                    "name": "Title of the category",
+                    "description": "Title of the category tile",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "id": "description",
+                    "name": "Description",
+                    "description": "Description of the category tile",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "position",
+                    "name": "Position of the title ",
+                    "type": "enum",
+                    "values": ["bottom", "top"],
+                    "required": true
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}
