@@ -1,0 +1,162 @@
+@import './breakpoints.scss';
+
+.hotspot {
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    background-color: rgba(220, 222, 220, 0.6);
+    transition: background-color ease-in-out 300ms;
+    position:absolute;
+    cursor: pointer;
+
+
+    &::after {
+        content: '\2795';
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform .3s ease-in-out;
+    }
+
+    &.edit-mode {
+        background-color: black;
+
+        &::after {
+            content: attr(data-index);
+            background: white;
+            border-radius: 50%;
+            font-size: 12px;
+            width: unset;
+            height: unset;
+            display: inline-block;
+            padding: 0 6px;
+            top: 5px;
+            position: absolute;
+            left: 5px;
+        }
+    }
+
+    &:hover {
+        background-color: rgba(245, 245, 245, .8);
+    }
+
+    &.visible-mobileImage {
+        display: block;
+    }
+    &.visible-desktopImage {
+        display: none;
+    }
+
+    &.visible-tabletImage {
+        display: none;
+    }
+
+    &.expand-hotspot {
+        &::after {
+            transform: rotate(45deg);
+        }
+        .hotspot-product {
+            display: block;
+        }
+    }
+
+    .hotspot-product {
+        margin: 0 auto;
+        min-width: 200px;
+        background-color: white;
+        max-width: 150px;
+        padding: 10px;
+        display: none;
+        right: 0px;
+        left: 0px;
+        width: 100%;
+        top: 25%;
+        position: fixed;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        height: 20px;
+    }
+
+    .cart-and-ipay{
+        padding-bottom: 0;
+    }
+
+    /* Using SCSS variables to store breakpoints */
+
+    @media (min-width: $tablet) {
+        .hotspot-product {
+            min-width: 200px;
+            max-width: 400px;
+        }
+
+        &.visible-mobileImage {
+            display: none;
+        }
+
+        &.visible-desktopImage {
+            display: none;
+        }
+
+        &.visible-tabletImage {
+            display: block;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        .hotspot-product {
+            left: 40px;
+            top: -10px;
+            max-width: 150px;
+            position: absolute;
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: -24px;
+                border: solid 13px transparent;
+                border-right-color: #fff;
+            }
+
+            .close-button {
+                display: none;
+            }
+        }
+
+        .flip-hotspot-product-left {
+            left: unset;
+            right: 40px;
+
+            &::before {
+                transform: scale(-1, 1);
+
+                left: unset;
+                right: -25px;
+            }
+        }
+
+        &.visible-mobileImage {
+            display: none;
+        }
+
+        &.visible-desktopImage {
+            position: absolute;
+            display: block;
+        }
+
+        &.visible-tabletImage {
+            display: none;
+        }
+    }
+
+    .add-to-cart{
+        width: 100%;
+        font-size: 15px;
+    }
+}

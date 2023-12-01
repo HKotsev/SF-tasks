@@ -61,7 +61,7 @@ Template Notes:
                 >
                     ${attrValue.displayValue}
                 </option>
-            </isloop>
+            </isloop>            
         </select>
 
     </isif>

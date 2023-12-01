@@ -1,0 +1,48 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addJs('/js/hotspotProductTile.js');
+    assets.addCss('/css/hotspot.css');
+</isscript>
+
+<div class="hotspot-image-wrapper">
+    <div class="position-relative d-inline-block w-100">
+        <picture>
+            <source srcset="${pdict.desktopImage}" media="(min-width: 1024px)"/>
+            <source srcset="${pdict.tabletImage}" media="(min-width: 768px)"/>
+            <source srcset="${pdict.mobileImage}" media="(min-width: 320px)"/>
+            <img
+                class="image-fluid common-image-component hotspot-image w-100"
+                src="${pdict.mobileImage}"
+            />
+            <isloop items="${pdict.images}" var="hotspotImage">
+                <isloop items=${hotspotImage.hotspots}  var="hotspot"  status="loopstatus">
+                    <isset name="yCoordinate" value="${hotspot[0]}" scope="page" />
+                    <isset name="xCoordinate" value="${hotspot[1]}" scope="page" />
+                    <isset name="productId" value="${hotspot[2]}" scope="page" />
+                    <isset name="product" value="${hotspot[3]}" scope="page" />
+                    <isset name="productShowUrl" value="${hotspot[4]}" scope="page" />
+
+                    <isif condition="${hotspotImage.type == 'desktopImage'}">
+                        <div class="hotspot position-absolute visible-${hotspotImage.type} ${pdict.isEditMode ? 'edit-mode' : ''}" data-index="5" style="top:${xCoordinate};left:${yCoordinate};">
+                            <isinclude template="product/hotspotProductTile" />
+                        </div>
+                            <iselse/>
+                        <div type="button" class="hotspot position-absolute visible-${hotspotImage.type} ${pdict.isEditMode ? 'edit-mode' : ''}"  data-index="${loopstatus.count}" style="top:${xCoordinate};left:${yCoordinate};" data-toggle="modal" data-target=".modal-${hotspotImage.type}-${loopstatus.count}">
+                            <!-- Modal -->
+                            <div class="modal fade modal-${hotspotImage.type}-${loopstatus.count}" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle-${hotspotImage.type}" aria-hidden="true" >
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                            <isinclude template="product/hotspotProductTile" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </isif>
+                </isloop>
+            </isloop>
+        </picture>
+    </div>
+    <span class="hotspot-src-element" style="display: none;" type="desktopImage" name="desktop" src="${pdict.desktopImage}" hotspots=""></span>
+    <span class="hotspot-src-element" style="display: none;" type="tabletImage" name="tablet" src="${pdict.tabletImage}" hotspots=""></span>
+    <span class="hotspot-src-element" style="display: none;" type="mobileImage" name="mobile" src="${pdict.mobileImage}" hotspots=""></span>
+</div>

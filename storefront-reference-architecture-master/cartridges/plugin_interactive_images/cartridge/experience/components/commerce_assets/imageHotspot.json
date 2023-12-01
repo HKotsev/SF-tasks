@@ -1,0 +1,45 @@
+{
+    "name": "Image With Hostpots",
+    "description": "This is a component combined image/video with text or just image/video",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "configurations",
+            "attribute_definitions": [
+                {
+                    "id": "desktopImage",
+                    "name": "Desktop image",
+                    "type": "image",
+                    "required": true
+                },
+                {
+                    "id": "tabletImage",
+                    "name": "Tablet image",
+                    "type": "image",
+                    "required": true
+                },
+                {
+                    "id": "mobileImage",
+                    "name": "Mobile image",
+                    "type": "image",
+                    "required": true
+                },
+                {
+                    "id": "hotspots",
+                    "name": "Image hotspot editor",
+                    "type": "custom",
+                    "required": false,
+                    "editor_definition": {
+                        "type": "com.sfcc.imageHotspotsEditorTrigger",
+                        "configuration": {
+                            "options": {
+                                "config": []
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

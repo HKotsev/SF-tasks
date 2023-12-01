@@ -1,0 +1,18 @@
+@import "utility/bootstrap";
+
+.hotspots-container {
+    padding: 10px 0;
+
+    .hotspot-header {
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .hotspot-breakout-marker {
+        &::before {
+            content: attr(data-index);
+            margin-right: 5px
+        }
+    }
+}

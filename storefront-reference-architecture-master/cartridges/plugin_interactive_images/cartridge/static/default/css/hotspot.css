@@ -1,0 +1,145 @@
+@charset "UTF-8";
+.hotspot {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  background-color: rgba(220, 222, 220, 0.6);
+  -webkit-transition: background-color ease-in-out 300ms;
+  transition: background-color ease-in-out 300ms;
+  position: absolute;
+  cursor: pointer;
+  /* Using SCSS variables to store breakpoints */
+}
+.hotspot::after {
+  content: "\2795";
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+.hotspot.edit-mode {
+  background-color: black;
+}
+.hotspot.edit-mode::after {
+  content: attr(data-index);
+  background: white;
+  border-radius: 50%;
+  font-size: 12px;
+  width: unset;
+  height: unset;
+  display: inline-block;
+  padding: 0 6px;
+  top: 5px;
+  position: absolute;
+  left: 5px;
+}
+.hotspot:hover {
+  background-color: rgba(245, 245, 245, 0.8);
+}
+.hotspot.visible-mobileImage {
+  display: block;
+}
+.hotspot.visible-desktopImage {
+  display: none;
+}
+.hotspot.visible-tabletImage {
+  display: none;
+}
+.hotspot.expand-hotspot::after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.hotspot.expand-hotspot .hotspot-product {
+  display: block;
+}
+.hotspot .hotspot-product {
+  margin: 0 auto;
+  min-width: 200px;
+  background-color: white;
+  max-width: 150px;
+  padding: 10px;
+  display: none;
+  right: 0px;
+  left: 0px;
+  width: 100%;
+  top: 25%;
+  position: fixed;
+}
+.hotspot .close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 20px;
+}
+.hotspot .cart-and-ipay {
+  padding-bottom: 0;
+}
+@media (min-width: 768px) {
+  .hotspot .hotspot-product {
+    min-width: 200px;
+    max-width: 400px;
+  }
+  .hotspot.visible-mobileImage {
+    display: none;
+  }
+  .hotspot.visible-desktopImage {
+    display: none;
+  }
+  .hotspot.visible-tabletImage {
+    display: block;
+  }
+}
+@media (min-width: 1024px) {
+  .hotspot .hotspot-product {
+    left: 40px;
+    top: -10px;
+    max-width: 150px;
+    position: absolute;
+  }
+  .hotspot .hotspot-product::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -24px;
+    border: solid 13px transparent;
+    border-right-color: #fff;
+  }
+  .hotspot .hotspot-product .close-button {
+    display: none;
+  }
+  .hotspot .flip-hotspot-product-left {
+    left: unset;
+    right: 40px;
+  }
+  .hotspot .flip-hotspot-product-left::before {
+    -webkit-transform: scale(-1, 1);
+            transform: scale(-1, 1);
+    left: unset;
+    right: -25px;
+  }
+  .hotspot.visible-mobileImage {
+    display: none;
+  }
+  .hotspot.visible-desktopImage {
+    position: absolute;
+    display: block;
+  }
+  .hotspot.visible-tabletImage {
+    display: none;
+  }
+}
+.hotspot .add-to-cart {
+  width: 100%;
+  font-size: 15px;
+}

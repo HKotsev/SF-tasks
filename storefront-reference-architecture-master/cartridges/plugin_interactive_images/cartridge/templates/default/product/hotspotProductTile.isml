@@ -1,0 +1,27 @@
+ <div data-pid="${productId}" class="modal-body product-detail hotspot-product visible-${hotspotImage.type}">
+        <div class="mb-2">
+                <img
+                    class="close-button"
+                    src="${URLUtils.staticURL('/images/icon-close.svg')}"
+                        height="32"
+                />
+                <a href="${productShowUrl}" class="product-link">
+                <img src="${product.images.medium[0].absURL}" class="d-block img-fluid"itemprop="image" />
+                <isif condition="${product.brand}">
+                    <h4 class="product-brand">
+                        ${product.brand}
+                    </h4>
+                </isif>
+
+                <isif condition="${product.productName}">
+                    <h6 class="product-name">
+                        ${product.productName}
+                    </h6>
+                </isif>
+            </a>
+            <isif condition="${product.price.sales.formatted}">
+                <isprint value="${product.price.sales.formatted}" encoding="off" />
+            </isif>
+        </div>
+        <isinclude template="product/components/addToCartProduct" />
+</div>
