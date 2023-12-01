@@ -8,7 +8,8 @@
 
         <isinclude template="product/components/productTileName" />
 
-        <iscomment> <isinclude template="product/components/description" /> </iscomment>
+        <isinclude template="product/components/description" />
+
         
         <isset name="price" value="${product.price}" scope="page" />
         <isif condition="${product.productType === 'set'}">

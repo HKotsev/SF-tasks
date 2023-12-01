@@ -125,8 +125,9 @@
                         </div>
                         
                         <isif condition="${product.shipping}">                          
+                        
                             <isprint value="${product.shipping}" encoding="off" /> 
-                            s                           
+
                         </isif>
 
                         <!-- Social Sharing Icons -->
