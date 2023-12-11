@@ -509,6 +509,17 @@
         </content-links>
     </content>
 
+    <content content-id="product_subscription_message">
+    <display-name xml:lang="x-default">Product subscription message</display-name>
+    <online-flag>true</online-flag>
+    <searchable-flag>true</searchable-flag>
+    <custom-attributes>
+      <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;Subscribe to receive SMS message when the product is back in stock. &lt;/p&gt;</custom-attribute>
+    </custom-attributes>
+    <folder-links>
+    </folder-links>
+  </content>
+
     <content content-id="14bc311d27f72374e01d843d0e">
         <display-name xml:lang="x-default">Product Tile Component</display-name>
         <type>component.commerce_assets.productTile</type>

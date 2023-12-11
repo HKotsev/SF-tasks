@@ -1,0 +1,16 @@
+{
+    "step-types": {
+        "script-module-step": [
+            {
+                "@type-id": "custom.SendingProductAvailabilitySMSStep",
+                "description": "Job for sending SMS when product is available.The SMS is sent to all users that are subscribed for the particular product.",
+                "module": "int_twilio/cartridge/scripts/steps/SendingProductSmsJob.js"
+            },
+            {
+                "@type-id": "custom.DeletingVerificationCodesSteop",
+                "description": "Job for deleting all the verification codes that are expired.",
+                "module": "int_twilio/cartridge/scripts/steps/DeletingVerificationCodesSteop.js"
+            }
+        ]
+    }
+}
