@@ -21,8 +21,8 @@ function externalCustomersService(requestConfig) {
 
             filterLogMessage: function (msg) {
                 return msg.replace(
-                    /password\: \".*?\"/,
-                    "password:************"
+                    /"password"\s*:\s*"(.*?)"/,
+                    '"password":"************"'
                 );
             },
         }

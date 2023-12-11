@@ -87,20 +87,18 @@ server.replace(
 
                 const uniqueExternalId = UUIDUtils.createUUID();
 
-                var response =
-                    extarnalCustomersService.externalCustomersService({
-                        url: "/customers",
-                        body: {
-                            id: uniqueExternalId,
-                            firstName: registrationObj.firstName,
-                            lastName: registrationObj.lastName,
-                            email: registrationObj.email,
-                            password: registrationObj.password,
-                            phone: registrationObj.phone,
-                        },
-                    });
+                var response;
 
-                if (!response.isOk()) {
+                if (serviceHook) {
+                    response = HookMgr.callHook(
+                        "app.external.customers.data",
+                        "createUser",
+                        uniqueExternalId,
+                        registrationData
+                    );
+                }
+
+                if (!response.isOk() && serviceHook) {
                     res.json({
                         error: Resource.msg(
                             "error.message.account.create.error",
@@ -152,6 +150,10 @@ server.replace(
                             newCustomerProfile.phoneHome =
                                 registrationData.phone;
                             newCustomerProfile.email = login;
+                            if (serviceHook) {
+                                newCustomerProfile.custom.externalCustomerId =
+                                    uniqueExternalId;
+                            }
 
                             order.setCustomer(newCustomer);
 

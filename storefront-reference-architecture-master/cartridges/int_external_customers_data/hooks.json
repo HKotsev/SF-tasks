@@ -1,0 +1,8 @@
+{
+    "hooks": [
+        {
+            "name": "app.external.customers.data",
+            "script": "./cartridge/scripts/hooks/externalData.js"
+        }
+    ]
+}

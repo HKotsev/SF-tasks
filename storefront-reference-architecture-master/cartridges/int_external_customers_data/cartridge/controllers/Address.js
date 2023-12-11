@@ -8,6 +8,7 @@ var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
 var userLoggedIn = require("*/cartridge/scripts/middleware/userLoggedIn");
 var consentTracking = require("*/cartridge/scripts/middleware/consentTracking");
 var extarnalCustomersService = require("*/cartridge/scripts/externalCustomersService.js");
+var HookMgr = require("dw/system/HookMgr");
 
 const page = module.superModule;
 server.extend(page);
@@ -38,29 +39,23 @@ server.replace(
                 var formInfo = res.getViewData();
                 var response;
                 var errorMessage;
-                var externalCustomerBody = {
-                    addressId: formInfo.addressId,
-                    firstName: formInfo.firstName,
-                    lastName: formInfo.lastName,
-                    address1: formInfo.address1 || "",
-                    address2: formInfo.address2 || "",
-                    county: formInfo.county,
-                    stateCode: formInfo.states.stateCode,
-                    city: formInfo.city,
-                    postalCode: formInfo.postalCode,
-                    phone: formInfo.phone,
-                };
+                var uniqueExternalId;
+                var serviceHook = HookMgr.hasHook(
+                    "app.external.customers.data"
+                );
+                var response;
 
-                if (req.querystring.addressId) {
-                    var address = addressBook.getAddress(
+                if (req.querystring.addressId && serviceHook) {
+                    var externalAddressId = addressBook.getAddress(
                         req.querystring.addressId
                     ).custom.externalAddressId;
-                    response =
-                        extarnalCustomersService.externalCustomersService({
-                            method: "PATCH",
-                            url: `/addressBook/${address}`,
-                            body: externalCustomerBody,
-                        });
+
+                    response = HookMgr.callHook(
+                        "app.external.customers.data",
+                        "updateAddress",
+                        externalAddressId,
+                        formInfo
+                    );
                     if (!response.isOk()) {
                         errorMessage = Resource.msg(
                             "error.message.unable.to.create.address",
@@ -69,12 +64,13 @@ server.replace(
                         );
                     }
                 } else {
-                    externalCustomerBody.id = UUIDUtils.createUUID();
-                    response =
-                        extarnalCustomersService.externalCustomersService({
-                            url: "/addressBook",
-                            body: externalCustomerBody,
-                        });
+                    uniqueExternalId = UUIDUtils.createUUID();
+                    response = HookMgr.callHook(
+                        "app.external.customers.data",
+                        "createAddress",
+                        uniqueExternalId,
+                        formInfo
+                    );
                     if (!response.isOk()) {
                         errorMessage = Resource.msg(
                             "error.message.unable.to.edit.address",
@@ -83,7 +79,7 @@ server.replace(
                         );
                     }
                 }
-                if (!response.isOk()) {
+                if (!response.isOk() && serviceHook) {
                     res.setStatusCode(500);
                     res.json({
                         success: false,
@@ -103,9 +99,8 @@ server.replace(
                             ? addressBook.getAddress(req.querystring.addressId)
                             : addressBook.createAddress(formInfo.addressId);
 
-                        if (!req.querystring.addressId) {
-                            address.custom.externalAddressId =
-                                externalCustomerBody.id;
+                        if (!req.querystring.addressId && serviceHook) {
+                            address.custom.externalAddressId = uniqueExternalId;
                         }
                     }
 

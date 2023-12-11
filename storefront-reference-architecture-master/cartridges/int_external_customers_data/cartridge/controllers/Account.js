@@ -5,6 +5,7 @@ var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
 var userLoggedIn = require("*/cartridge/scripts/middleware/userLoggedIn");
 var consentTracking = require("*/cartridge/scripts/middleware/consentTracking");
 var extarnalCustomersService = require("*/cartridge/scripts/externalCustomersService.js");
+var HookMgr = require("dw/system/HookMgr");
 var UUIDUtils = require("dw/util/UUIDUtils");
 
 const page = module.superModule;
@@ -95,23 +96,22 @@ server.replace(
                 if (registrationForm.validForm) {
                     var login = registrationForm.email;
                     var password = registrationForm.password;
-
+                    var serviceHook = HookMgr.hasHook(
+                        "app.external.customers.data"
+                    );
                     const uniqueExternalId = UUIDUtils.createUUID();
+                    var response;
 
-                    var response =
-                        extarnalCustomersService.externalCustomersService({
-                            url: "/customers",
-                            body: {
-                                id: uniqueExternalId,
-                                firstName: registrationForm.firstName,
-                                lastName: registrationForm.lastName,
-                                email: registrationForm.email,
-                                password: registrationForm.password,
-                                phone: registrationForm.phone,
-                            },
-                        });
+                    if (serviceHook) {
+                        response = HookMgr.callHook(
+                            "app.external.customers.data",
+                            "createUser",
+                            uniqueExternalId,
+                            registrationForm
+                        );
+                    }
 
-                    if (!response.isOk()) {
+                    if (!response.isOk() && serviceHook) {
                         res.setStatusCode(500);
                         res.json({
                             success: false,
@@ -173,8 +173,10 @@ server.replace(
                                     registrationForm.phone;
                                 newCustomerProfile.email =
                                     registrationForm.email;
-                                newCustomerProfile.custom.externalCustomerId =
-                                    uniqueExternalId;
+                                if (serviceHook) {
+                                    newCustomerProfile.custom.externalCustomerId =
+                                        uniqueExternalId;
+                                }
                             }
                         });
                     } catch (e) {
@@ -324,22 +326,21 @@ server.replace(
                 delete formInfo.password;
                 delete formInfo.confirmEmail;
 
-                // var accountModel = accountHelpers.getAccountModel(req);
+                var serviceHook = HookMgr.hasHook(
+                    "app.external.customers.data"
+                );
+                var response;
 
-                var response =
-                    extarnalCustomersService.externalCustomersService({
-                        method: "PATCH",
-                        url: `/customers/${profile.custom.externalCustomerId}`,
-                        body: {
-                            firstName: formInfo.firstName,
-                            lastName: formInfo.lastName,
-                            email: formInfo.email,
-                            password: formInfo.password,
-                            phone: formInfo.phone,
-                        },
-                    });
+                if (serviceHook) {
+                    response = HookMgr.callHook(
+                        "app.external.customers.data",
+                        "updateUserData",
+                        profile.custom.externalCustomerId,
+                        formInfo
+                    );
+                }
 
-                if (!response.isOk()) {
+                if (!response.isOk() && serviceHook) {
                     res.setStatusCode(500);
                     res.json({
                         success: false,

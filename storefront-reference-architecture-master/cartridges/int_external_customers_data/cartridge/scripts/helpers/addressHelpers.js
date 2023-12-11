@@ -1,6 +1,7 @@
 "use strict";
 
 var extarnalCustomersService = require("*/cartridge/scripts/externalCustomersService.js");
+var HookMgr = require("dw/system/HookMgr");
 
 var base = module.superModule;
 
@@ -41,24 +42,19 @@ base.updateAddressFields = function (newAddress, address) {
 base.saveAddress = function (address, customer, addressId) {
     var Transaction = require("dw/system/Transaction");
     var UUIDUtils = require("dw/util/UUIDUtils");
+    var serviceHook = HookMgr.hasHook("app.external.customers.data");
+    var response;
 
     var externalAddressId = UUIDUtils.createUUID();
-    var response = extarnalCustomersService.externalCustomersService({
-        url: "/addressBook",
-        body: {
-            id: externalAddressId,
-            addressId: addressId,
-            firstName: address.firstName,
-            lastName: address.lastName,
-            address1: address.address1 || "",
-            address2: address.address2 || "",
-            county: address.county,
-            stateCode: address.states.stateCode,
-            city: address.city,
-            postalCode: address.postalCode,
-            phone: address.phone,
-        },
-    });
+    address.addressId = addressId;
+    if (serviceHook) {
+        response = HookMgr.callHook(
+            "app.external.customers.data",
+            "createAddress",
+            externalAddressId,
+            address
+        );
+    }
 
     if (!response.isOk()) return;
 
