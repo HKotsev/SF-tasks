@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="CustomerAddress">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="externalAddressId">
+                <display-name xml:lang="x-default">External address id</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Standard">
+                <display-name xml:lang="x-default">Standard Address</display-name>
+                <attribute attribute-id="ID" system="true"/>
+                <attribute attribute-id="title" system="true"/>
+                <attribute attribute-id="companyName" system="true"/>
+                <attribute attribute-id="salutation" system="true"/>
+                <attribute attribute-id="firstName" system="true"/>
+                <attribute attribute-id="secondName" system="true"/>
+                <attribute attribute-id="lastName" system="true"/>
+                <attribute attribute-id="suffix" system="true"/>
+                <attribute attribute-id="address1" system="true"/>
+                <attribute attribute-id="address2" system="true"/>
+                <attribute attribute-id="suite" system="true"/>
+                <attribute attribute-id="postBox" system="true"/>
+                <attribute attribute-id="city" system="true"/>
+                <attribute attribute-id="postalCode" system="true"/>
+                <attribute attribute-id="countryCode" system="true"/>
+                <attribute attribute-id="stateCode" system="true"/>
+                <attribute attribute-id="phone" system="true"/>
+                <attribute attribute-id="externalAddressId"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+    <type-extension type-id="Profile">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="externalCustomerId">
+                <display-name xml:lang="x-default">External customer id</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Standard">
+                <display-name xml:lang="x-default">Profile Attributes</display-name>
+                <attribute attribute-id="salutation" system="true"/>
+                <attribute attribute-id="title" system="true"/>
+                <attribute attribute-id="companyName" system="true"/>
+                <attribute attribute-id="jobTitle" system="true"/>
+                <attribute attribute-id="firstName" system="true"/>
+                <attribute attribute-id="lastName" system="true"/>
+                <attribute attribute-id="suffix" system="true"/>
+                <attribute attribute-id="gender" system="true"/>
+                <attribute attribute-id="birthday" system="true"/>
+                <attribute attribute-id="email" system="true"/>
+                <attribute attribute-id="nextBirthday" system="true"/>
+                <attribute attribute-id="secondName" system="true"/>
+                <attribute attribute-id="externalCustomerId"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+</metadata>
