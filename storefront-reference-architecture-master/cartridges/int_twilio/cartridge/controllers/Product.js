@@ -34,21 +34,21 @@ server.post("Subscribe", function (req, res, next) {
     var twilioService = require("*/cartridge/scripts/twilioService.js");
     var Resource = require("dw/web/Resource");
 
-    const twilioNumber = Site.current.preferences.custom.twilioNumber;
-    const productSubscriptionForm = server.forms.getForm("productSubscription");
+    var twilioNumber = Site.current.preferences.custom.twilioNumber;
+    var productSubscriptionForm = server.forms.getForm("productSubscription");
 
-    const phone = productSubscriptionForm.productSubscription.phone.value;
-    const productId =
-        productSubscriptionForm.productSubscription.productID.value;
-    const isPhoneNumberExisting =
-        productSubscriptionHelper.isPhoneNumberExisting(productId, phone);
+    var phone = productSubscriptionForm.productSubscription.phone.value;
+    var productId = productSubscriptionForm.productSubscription.productID.value;
+    var isPhoneNumberExisting = productSubscriptionHelper.isPhoneNumberExisting(
+        productId,
+        phone
+    );
 
     if (
         !isPhoneNumberExisting.objectExcist ||
         !isPhoneNumberExisting.phoneExcist
     ) {
-        const isVerified =
-            productSubscriptionHelper.isUserAlreadyVerified(phone);
+        var isVerified = productSubscriptionHelper.isUserAlreadyVerified(phone);
 
         if (isVerified) {
             productSubscriptionHelper.savePhoneNumber(
@@ -67,10 +67,10 @@ server.post("Subscribe", function (req, res, next) {
                 ),
             });
         } else {
-            const verificationCode =
+            var verificationCode =
                 productSubscriptionHelper.saveVerificationCode(phone);
 
-            const message = StringUtils.format(
+            var message = StringUtils.format(
                 Resource.msg(
                     "verification.code.sms.message",
                     "verificationCode",
