@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+   <custom-type type-id="PRODUCT_SUBSCRIPTION">
+        <display-name xml:lang="x-default">Product Subscription</display-name>
+        <staging-mode>no-staging</staging-mode>
+        <storage-scope>site</storage-scope>
+        <retention-days>7</retention-days>
+        <key-definition attribute-id="productId">
+            <type>string</type>
+            <min-length>0</min-length>
+        </key-definition>
+        <attribute-definitions>
+            <attribute-definition attribute-id="phoneNumbers">
+                <display-name xml:lang="x-default">Phone Numbers</display-name>
+                <type>set-of-string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+        </attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Standart">
+                <display-name xml:lang="x-default">Product subscription</display-name>
+                <attribute attribute-id="productId"/>
+                <attribute attribute-id="phoneNumbers"/>
+            </attribute-group>
+        </group-definitions>
+    </custom-type>
+
+    <custom-type type-id="PHONE_VERIFICATION">
+        <display-name xml:lang="x-default">Phone number verification</display-name>
+        <staging-mode>no-staging</staging-mode>
+        <storage-scope>site</storage-scope>
+        <retention-days>1</retention-days>
+        <key-definition attribute-id="verificationCode">
+            <type>string</type>
+            <min-length>0</min-length>
+        </key-definition>
+        <attribute-definitions>
+            <attribute-definition attribute-id="expirationTime">
+                <display-name xml:lang="x-default">Expiration Time</display-name>
+                <type>datetime</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="phoneNumber">
+                <display-name xml:lang="x-default">Phone number</display-name>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Standart">
+                <display-name xml:lang="x-default">Verification</display-name>
+                <attribute attribute-id="phoneNumber"/>
+                <attribute attribute-id="verificationCode"/>
+                <attribute attribute-id="expirationTime"/>
+            </attribute-group>
+        </group-definitions>
+    </custom-type>
+
+</metadata>

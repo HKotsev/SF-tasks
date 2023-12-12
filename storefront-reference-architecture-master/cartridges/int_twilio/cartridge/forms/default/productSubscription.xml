@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
+	<group formid="productSubscription">
+        <field 
+			formid="phone"
+			label="label.input.phone.profile"
+			mandatory="true"
+			regexp="^\+(?:[0-9] ?){6,14}[0-9]$"
+			missing-error="error.message.required"
+			parse-error="error.message.parse.phone.profile.form"
+			type="string"/> 
+
+             <field 
+            formid="productID" 
+            type="string" 
+            mandatory="true" />
+    </group>
+</form>

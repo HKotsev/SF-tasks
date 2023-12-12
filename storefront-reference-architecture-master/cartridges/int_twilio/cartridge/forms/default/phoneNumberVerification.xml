@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
+	<group formid="verification">
+        <field 
+			formid="code"
+			label="label.input.sms.code"
+			mandatory="true"
+			regexp="^[a-zA-Z0-9]+$"
+			missing-error="error.message.required"
+			parse-error="error.message.parse.phone.profile.form"
+			type="string"/> 
+
+			  <field 
+            formid="productID" 
+            type="string" 
+            mandatory="true" />
+
+    </group>
+</form>

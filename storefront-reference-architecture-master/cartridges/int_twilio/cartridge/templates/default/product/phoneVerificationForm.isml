@@ -1,0 +1,20 @@
+<form action="${URLUtils.url('Account-Verify')}" class="js-product-verification-form" method="POST" <isprint value="${pdict.phoneNumberVerificationForm.attributes}" encoding="off" />>
+
+    <div class="form-group
+        <isif condition="${pdict.phoneNumberVerificationForm.verification.code.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="phone">
+            <isprint value="${pdict.phoneNumberVerificationForm.verification.code.label}" encoding="htmlcontent" />
+        </label>
+        <input type="text" class="form-control" id="phone"
+            <isprint value="${pdict.phoneNumberVerificationForm.verification.code.attributes}" encoding="off" />>
+        <div class="invalid-feedback"></div>
+    </div>
+
+    <input type="hidden" id="productID" class="js-verification-product-id" value="${pdict.productId}" <isprint
+            value="${pdict.phoneNumberVerificationForm.verification.productID.attributes}" encoding="off" />>
+
+    <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
+    <div class="col">
+            <button type="submit" name="save" class="btn btn-save btn-block btn-primary">${Resource.msg('form.btn.verify','forms',null)}</button>
+    </div>
+</form>

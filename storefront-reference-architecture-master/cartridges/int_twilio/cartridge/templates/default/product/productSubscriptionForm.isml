@@ -1,0 +1,20 @@
+<form action="${URLUtils.url('Product-Subscribe')}" class="product-subscription-form" method="POST" <isprint value="${pdict.productSubscriptionForm.attributes}" encoding="off" />>
+
+    <div class="form-group
+        <isif condition="${pdict.productSubscriptionForm.productSubscription.phone.mandatory === true}">required</isif>">
+        <label class="form-control-label" for="phone">
+            <isprint value="${pdict.productSubscriptionForm.productSubscription.phone.label}" encoding="htmlcontent" />
+        </label>
+        <input type="text" class="form-control" id="phone"
+            <isprint value="${pdict.productSubscriptionForm.productSubscription.phone.attributes}" encoding="off" />>
+        <div class="invalid-feedback"></div>
+    </div>
+    
+    <input type="hidden" id="productID" class="subscription-product-id" value="${pdict.productId}" <isprint
+            value="${pdict.productSubscriptionForm.productSubscription.productID.attributes}" encoding="off" />>
+
+    <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
+        <div class="col">
+            <button type="submit" name="save" class="btn btn-save btn-block btn-primary">${Resource.msg('form.btn.notify','productSubscription',null)}</button>
+        </div>
+</form>
