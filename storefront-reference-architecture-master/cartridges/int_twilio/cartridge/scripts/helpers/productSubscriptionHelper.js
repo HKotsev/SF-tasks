@@ -32,7 +32,7 @@ var saveVerificationCode = (phoneNumber) => {
     Transaction.wrap(() => {
         var verificationCodeObject = CustomObjectMgr.createCustomObject(
             PHONE_VERIFICATION_TABLE_NAME,
-            verificationCode
+            verificationCode.slice(0, 6)
         );
         verificationCodeObject.custom.phoneNumber = phoneNumber;
         var currentDate = new Date();

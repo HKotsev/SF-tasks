@@ -1,4 +1,3 @@
-<isprint value="${pdict.productId}" encoding="on" />
 <form action="${URLUtils.url('Account-Verify')}" class="js-product-verification-form" method="POST" <isprint value="${pdict.phoneNumberVerificationForm.attributes}" encoding="off" />>
 
     <div class="form-group
