@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * @namespace PhoneNumber
+ * @namespace Account
  */
 
 "use strict";
@@ -9,6 +9,8 @@
 var server = require("server");
 var consentTracking = require("*/cartridge/scripts/middleware/consentTracking");
 var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
+var page = module.superModule;
+server.extend(page);
 
 server.get(
     "PhoneNumberVerification",

@@ -9,7 +9,7 @@
             {
                 "@type-id": "custom.DeletingVerificationCodesSteop",
                 "description": "Job for deleting all the verification codes that are expired.",
-                "module": "int_twilio/cartridge/scripts/steps/DeletingVerificationCodesSteop.js"
+                "module": "int_twilio/cartridge/scripts/steps/DeletingVerificationCodesStep.js"
             }
         ]
     }

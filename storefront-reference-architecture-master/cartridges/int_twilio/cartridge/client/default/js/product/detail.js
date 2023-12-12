@@ -1,8 +1,9 @@
 var base = require("base/product/detail");
+const bodyElement = $("body");
 
 function popUpMessage(messageType, msg) {
     if ($(".add-to-cart-messages").length === 0) {
-        $("body").append('<div class="add-to-cart-messages"></div>');
+        bodyElement.append('<div class="add-to-cart-messages"></div>');
     }
 
     $(".add-to-cart-messages").append(
@@ -19,8 +20,7 @@ function popUpMessage(messageType, msg) {
 }
 
 base.updateAttribute = function () {
-    $("body").on("product:afterAttributeSelect", function (e, response) {
-        console.log(response);
+    bodyElement.on("product:afterAttributeSelect", function (e, response) {
         if (response.data.product.available) {
             $(".js-cart-button").removeClass("d-none");
             $(".js-product-subscription").addClass("d-none");
@@ -51,13 +51,11 @@ base.updateAttribute = function () {
 };
 
 base.subscribeToProduct = function () {
-    $("body").on("submit", ".product-subscription-form", function (e) {
+    bodyElement.on("submit", ".product-subscription-form", function (e) {
         e.preventDefault();
-        console.log(e);
-        console.log(this);
         var $form = $(this);
         var url = $form.attr("action");
-        console.log(url);
+
         $form.spinner().start();
         $.ajax({
             url: url,
@@ -65,8 +63,6 @@ base.subscribeToProduct = function () {
             dataType: "json",
             data: $form.serialize(),
             success: function (data) {
-                console.log(data);
-                console.log("hi");
                 $form.spinner().stop();
                 if (!data.success) {
                     popUpMessage("alert-danger", data.message);
@@ -93,13 +89,12 @@ base.subscribeToProduct = function () {
 };
 
 base.verifyNumber = function () {
-    $("body").on("submit", ".js-product-verification-form", function (e) {
+    bodyElement.on("submit", ".js-product-verification-form", function (e) {
         e.preventDefault();
-        console.log(e);
-        console.log(this);
+
         var $form = $(this);
         var url = $form.attr("action");
-        console.log(url);
+
         $form.spinner().start();
         $.ajax({
             url: url,
@@ -107,8 +102,6 @@ base.verifyNumber = function () {
             dataType: "json",
             data: $form.serialize(),
             success: function (data) {
-                console.log(data);
-                console.log("hi");
                 $form.spinner().stop();
                 if (!data.success) {
                     popUpMessage("alert-danger", data.message);

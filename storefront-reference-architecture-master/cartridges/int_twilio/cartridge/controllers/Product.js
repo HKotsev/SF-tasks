@@ -3,7 +3,7 @@
 var server = require("server");
 var consentTracking = require("*/cartridge/scripts/middleware/consentTracking");
 var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
-var page = module.superModule; //inherits functionality from next Product.js found to the right on the cartridge path
+var page = module.superModule;
 server.extend(page);
 
 server.get(
@@ -40,15 +40,19 @@ server.post("Subscribe", function (req, res, next) {
     const phone = productSubscriptionForm.productSubscription.phone.value;
     const productId =
         productSubscriptionForm.productSubscription.productID.value;
-    const isExisting = productSubscriptionHelper.isExisting(productId, phone);
+    const isPhoneNumberExisting =
+        productSubscriptionHelper.isPhoneNumberExisting(productId, phone);
 
-    if (!isExisting.objectExcist || !isExisting.phoneExcist) {
+    if (
+        !isPhoneNumberExisting.objectExcist ||
+        !isPhoneNumberExisting.phoneExcist
+    ) {
         const isVerified =
             productSubscriptionHelper.isUserAlreadyVerified(phone);
 
         if (isVerified) {
             productSubscriptionHelper.savePhoneNumber(
-                isExisting,
+                isPhoneNumberExisting,
                 phone,
                 productId
             );

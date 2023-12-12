@@ -4,9 +4,9 @@ var Calendar = require("dw/util/Calendar");
 var PHONE_NUMBERS_TABLE_NAME = "PRODUCT_SUBSCRIPTION";
 var PHONE_VERIFICATION_TABLE_NAME = "PHONE_VERIFICATION";
 
-const isExisting = (productId, phoneNumber) => {
-    const response = {};
-    const numberResult = CustomObjectMgr.getCustomObject(
+var isPhoneNumberExisting = (productId, phoneNumber) => {
+    var response = {};
+    var numberResult = CustomObjectMgr.getCustomObject(
         PHONE_NUMBERS_TABLE_NAME,
         productId
     );
@@ -23,14 +23,14 @@ const isExisting = (productId, phoneNumber) => {
     }
 };
 
-const saveVerificationCode = (phoneNumber) => {
+var saveVerificationCode = (phoneNumber) => {
     var Transaction = require("dw/system/Transaction");
 
     var UUIDUtils = require("dw/util/UUIDUtils");
     var objectCreatedSuccessfuly = false;
     var verificationCode = UUIDUtils.createUUID();
     Transaction.wrap(() => {
-        const verificationCodeObject = CustomObjectMgr.createCustomObject(
+        var verificationCodeObject = CustomObjectMgr.createCustomObject(
             PHONE_VERIFICATION_TABLE_NAME,
             verificationCode
         );
@@ -49,7 +49,7 @@ const saveVerificationCode = (phoneNumber) => {
     return false;
 };
 
-const savePhoneNumber = (subscriptionObjectInfo, phoneNumber, productId) => {
+var savePhoneNumber = (subscriptionObjectInfo, phoneNumber, productId) => {
     var Transaction = require("dw/system/Transaction");
 
     Transaction.wrap(() => {
@@ -78,22 +78,22 @@ const savePhoneNumber = (subscriptionObjectInfo, phoneNumber, productId) => {
     });
 };
 
-const isCodeExpired = (expirationDate) => {
-    const currentDate = new Date();
+var isCodeExpired = (expirationDate) => {
+    var currentDate = new Date();
     return currentDate >= expirationDate;
 };
 
-const verifyCode = (code, productId) => {
+var verifyCode = (code, productId) => {
     var Transaction = require("dw/system/Transaction");
     var Resource = require("dw/web/Resource");
 
-    const verificationCodeResult = CustomObjectMgr.getCustomObject(
+    var verificationCodeResult = CustomObjectMgr.getCustomObject(
         PHONE_VERIFICATION_TABLE_NAME,
         code
     );
 
     if (verificationCodeResult) {
-        const isExpired = isCodeExpired(
+        var isExpired = isCodeExpired(
             verificationCodeResult.custom.expirationTime
         );
         if (isExpired) {
@@ -107,8 +107,8 @@ const verifyCode = (code, productId) => {
                 ),
             };
         }
-        const phoneNumber = verificationCodeResult.custom.phoneNumber;
-        const response = isExisting(productId, phoneNumber);
+        var phoneNumber = verificationCodeResult.custom.phoneNumber;
+        var response = isPhoneNumberExisting(productId, phoneNumber);
 
         savePhoneNumber(response, phoneNumber, productId);
 
@@ -137,8 +137,8 @@ const verifyCode = (code, productId) => {
     };
 };
 
-const isUserAlreadyVerified = (phoneNumber) => {
-    const iteratorOfSubscriptions = CustomObjectMgr.queryCustomObjects(
+var isUserAlreadyVerified = (phoneNumber) => {
+    var iteratorOfSubscriptions = CustomObjectMgr.queryCustomObjects(
         PHONE_NUMBERS_TABLE_NAME,
         `custom.phoneNumbers LIKE '${phoneNumber}'`,
         null
@@ -146,7 +146,7 @@ const isUserAlreadyVerified = (phoneNumber) => {
     return iteratorOfSubscriptions.count > 0;
 };
 module.exports = {
-    isExisting,
+    isPhoneNumberExisting,
     saveVerificationCode,
     verifyCode,
     isUserAlreadyVerified,

@@ -124,20 +124,18 @@
 
                             <!-- Cart and [Optionally] Apple Pay -->
 
-                                <div class="js-cart-button" >
-                                    <isinclude template="product/components/addToCartProduct" />
-                                </div>
-                                
-                                <div class="js-phone-number-verification d-none">
-                                    <isinclude url="${URLUtils.url('PhoneNumber-PhoneNumberVerification', 'pid', product.id)}" />
-                                </div>
-                                <div class="js-product-subscription d-none">
-                                 <iscontentasset aid="product_subscription_message" />
-                                    <isinclude url="${URLUtils.url('Product-ProductSubscription', 'pid', product.id)}" />
-                                </div>
+                            <div class="js-cart-button" >
+                                <isinclude template="product/components/addToCartProduct" />
+                            </div>
+                            
+                            <div class="js-phone-number-verification d-none">
+                                <isinclude url="${URLUtils.url('Account-PhoneNumberVerification', 'pid', product.id)}" />
+                            </div>
+                            <div class="js-product-subscription d-none">
+                                <iscontentasset aid="product_subscription_message" />
+                                <isinclude url="${URLUtils.url('Product-ProductSubscription', 'pid', product.id)}" />
+                            </div>
                                    
-                            
-                            
                         </div>
 
                         <!-- Social Sharing Icons -->
