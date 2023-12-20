@@ -2,7 +2,6 @@
 
 function reCaptchaConfig(req, res, next) {
     var Site = require("dw/system/Site");
-    var URLUtils = require("dw/web/URLUtils");
     var {
         reCaptcha_siteKey: siteKey,
         reCaptcha_secretKey: secretKey,

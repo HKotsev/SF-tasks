@@ -1,17 +1,13 @@
 <isscript>
         var assets = require('*/cartridge/scripts/assets.js');
         assets.addJs('/js/AddressFormToggle.js');
-    </isscript>
+</isscript>
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="privateRadioBtn" checked>
-  <label class="form-check-label" for="flexRadioDefault1">
-    Private address
-  </label>
+  <label class="form-check-label" for="flexRadioDefault1"> Private address</label>
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="businessRadioBtn" >
-  <label class="form-check-label" for="flexRadioDefault2">
-    Business Address
-  </label>
+  <label class="form-check-label" for="flexRadioDefault2">Business Address</label>
 </div>

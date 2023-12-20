@@ -7,12 +7,10 @@ function verifyReCaptcha(token) {
         data: { token },
         dataType: "json",
         success: function () {
-            console.log("succes");
             $(".js-register-form").trigger("submit");
             $.spinner().stop();
         },
         error: function (err) {
-            console.log(err);
             $.spinner().stop();
         },
     });

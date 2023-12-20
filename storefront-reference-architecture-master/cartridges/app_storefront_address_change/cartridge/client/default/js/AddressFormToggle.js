@@ -1,12 +1,9 @@
 "use strict";
 
 $(document).ready(function () {
-    // Attach change event listener to radio buttons with class form-check-input
     $("body").on("change", ".form-check-input", function () {
         $(".form-check-input").removeAttr("checked");
-        // Check the clicked radio button
         $(this).attr("checked", "checked");
-        // Check which radio button is checked
         if (
             $(this).is(":checked") &&
             $(this).attr("id") === "businessRadioBtn"
