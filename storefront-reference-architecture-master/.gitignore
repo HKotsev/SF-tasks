@@ -5,6 +5,8 @@ cartridges/app_storefront_base/cartridge/static/default/js/
 cartridges/app_storefront_base/cartridge/static/default/fonts/
 
 cartridges/app_pdp/cartridge/static/default/js/
+cartridges/app_storefront_address_change/cartridge/static/default/js/
+
 
 cartridges/app_storefront_base/cartridge/static/fr_FR/css/
 cartridges/app_storefront_base/cartridge/static/fr_FR/js/
