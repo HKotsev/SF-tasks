@@ -1,0 +1,37 @@
+<div class="description-and-detail">
+    <div class="row product-attributes collapsible-xs">
+        <isinclude template="product/components/attributes" />
+    </div>
+
+    <div class="row details ">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <div class="title d-flex align-items-center">
+            <button class="btn js-btn-toggle-description" data-toggle="collapse" data-target="#collapseSection-1" aria-expanded="false" aria-controls="collapseSection"> <div class="input-group-addon">
+                <i class="fa fa-plus"></i>
+            </div></button>
+                <h2>${Resource.msg('label.details', 'product', null)}</h2>
+            </div>
+        </div>
+
+        <div class="collapse col-sm-12 col-md-8 col-lg-9" id="collapseSection-1">
+            <isinclude template="product/components/details" />
+        </div>
+        
+    </div>
+    
+    <div class="row details ">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <div class="title d-flex align-items-center">
+            <button class="btn js-btn-toggle-description" data-toggle="collapse" data-target="#collapseSection-2" aria-expanded="false" aria-controls="collapseSection"> <div class="input-group-addon">
+                <i class="fa fa-plus"></i>
+            </div></button>
+                <h2>${Resource.msg('label.details', 'product', null)}</h2>
+            </div>
+        </div>
+
+        <div class="collapse col-sm-12 col-md-8 col-lg-9" id="collapseSection-2">
+            <isprint value="${product.deliveryInformation}" encoding="on" />
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+    	<div class="MultiCarousel" data-items="1,3,3,4" data-slide="1" id="MultiCarousel"  data-interval="1000">
+            <div class="MultiCarousel-inner">
+                 <isloop items="${product.recommendations}" var="recommendation" status="loopStatus">
+                    <div class="item ">
+                        <div class="card-item border-0">
+                            <a href="#1"><isinclude url="${URLUtils.url('Tile-Show', 'pid', recommendation.recommendedItemID, 'swatches', false, 'ratings', true, 'showQuickView', false)}" /></a>
+                        </div>
+                    </div>
+                </isloop>
+               
+            </div>
+            <button class="btn btn-primary leftLst"><</button>
+            <button class="btn btn-primary rightLst">></button>
+        </div>
+    </div>
+</div>
