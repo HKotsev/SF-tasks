@@ -76,7 +76,7 @@
                         <isset name="isBundle" value="${false}" scope="page" />
                         <isset name="loopState" value="${{count: 1}}" scope="page" />
                         <isloop items="${product.variationAttributes}" var="attr" status="attributeStatus">
-                        <isif condition="${attr.id=="size"}">
+                        <isif condition="${attr.id=="size" || attr.id=="color"}">
                             <div class="row border-bottom p-0" data-attr="${attr.id}">
                                 <div class="col">
                                     <isinclude template="product/components/variationAttribute" />
