@@ -8522,6 +8522,28 @@ Per utilizzare un certificato regalo, specifica il codice di 16 cifre nella pagi
         </folder-links>
     </content>
 
+    <content content-id="products-promotion">
+        <display-name xml:lang="x-default">Product promotions</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <custom-attributes>
+        <custom-attribute attribute-id="body" xml:lang="x-default">&lt;div class=&quot;text-left&quot;&gt;&#13;&lt;p class=&quot;mt-4 font-weight-bold&quot;&gt;&lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt; Special offers available&lt;/p&gt;&#13;&lt;p class=&quot;mt-3&quot;&gt;Free gift when you spend 50€ +&lt;/p&gt;&#13;&lt;/div&gt;</custom-attribute>
+        </custom-attributes>
+        <folder-links>
+        </folder-links>
+    </content>
+
+     <content content-id="product-delivery-information">
+    <display-name xml:lang="x-default">Product delivery information</display-name>
+    <online-flag>true</online-flag>
+    <searchable-flag>true</searchable-flag>
+    <custom-attributes>
+      <custom-attribute attribute-id="body" xml:lang="x-default">{&#13;	&quot;73910532-1M&quot;: &quot;Delivery information: Free shipping on all orders within the country. Orders are processed within 1-2 business days. Expected delivery time is 5-7 business days. For international orders, shipping charges may apply.&quot;,&#13;	&quot;product-456&quot;: &quot;Shipping details for product 456: Standard shipping available. Orders usually ship within 24 hours. Delivery time varies based on location.&quot;,&#13;	&quot;product-789&quot;: &quot;Shipping info for product 789: Expedited shipping option available for faster delivery. Delivery time for standard shipping is 3-5 business days.&quot;&#13;}</custom-attribute>
+    </custom-attributes>
+    <folder-links>
+    </folder-links>
+  </content>
+
     <content content-id="jobs-landing">
         <display-name xml:lang="x-default">Jobs Landing Page</display-name>
         <description xml:lang="x-default">Welcome to Salesforce! At Salesforce we recognize all success starts with people. At Salesforce we value individuals who are passionate about delivering a strong product and services to all of our customers. At Salesforce we will provide you with an opportunity to work in an employee-friendly environment as well as improve Salesforce's offering and services to our customers. The possibilities are endless, not to mention the extensive benefits package, training and development opportunities along with discounts for all of our employees.</description>

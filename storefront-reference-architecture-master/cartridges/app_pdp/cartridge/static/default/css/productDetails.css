@@ -1,0 +1,77 @@
+/* Limit the description to two lines with ellipsis */
+.truncated-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 3.6em; /* Adjust as needed for two lines */
+}
+
+/* Hide the full description by default */
+.full-description {
+  display: none;
+}
+
+.custom-select {
+  background: none; /* Set background to none */
+  /* OR */
+  background: initial;
+}
+
+.custom-select[multiple] option:checked {
+  background-color: hsl(240deg, 1%, 22%); /* Change this to your desired background color */
+  color: white;
+}
+
+.MultiCarousel {
+  float: left;
+  overflow: hidden;
+  padding: 15px;
+  width: 100%;
+  position: relative;
+}
+
+.MultiCarousel .MultiCarousel-inner {
+  -webkit-transition: 1s ease all;
+  transition: 1s ease all;
+  float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item {
+  float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item .card-item {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  background: #f1f1f1;
+  color: #666;
+  height: 25rem;
+}
+
+.MultiCarousel .MultiCarousel-inner .item .card-item .product .product-tile {
+  border: none;
+}
+
+.MultiCarousel .leftLst,
+.MultiCarousel .rightLst {
+  position: absolute;
+  border-radius: 50%;
+  top: calc(50% - 20px);
+}
+
+.MultiCarousel .leftLst {
+  left: 0;
+}
+
+.MultiCarousel .rightLst {
+  right: 0;
+}
+
+.MultiCarousel .leftLst.over,
+.MultiCarousel .rightLst.over {
+  pointer-events: none;
+  background: #ccc;
+}

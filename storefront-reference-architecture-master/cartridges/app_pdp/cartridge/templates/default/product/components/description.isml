@@ -1,0 +1,8 @@
+<isif condition="${product.shortDescription}">
+    <div class="col-sm-12 col-md-12 col-lg-12 value mt-3 mb-3 content border-bottom" id="collapsible-description-${loopState && loopState.count ? loopState.count : '1'}">
+        <div class="description-container">
+            <p class="truncated-text mb-0">${product.shortDescription}</p>
+            <a class="btn-link show-all-btn ml-0 mt-0" href="">${Resource.msg('product.description.show.all', 'common', null)}</a>
+        </div>
+    </div>
+</isif>
