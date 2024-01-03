@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+    <service-credential service-credential-id="cat.fact.credentials">
+        <url>https://api.api-ninjas.com/v1/facts?limit=1</url>
+        <user-id/>
+        <password masked="true">********</password>
+    </service-credential>
+
+    <service-credential service-credential-id="external.customer.credentials">
+        <url>https://json-server-app-707ded616226.herokuapp.com</url>
+        <user-id/>
+        <password masked="true">********</password>
+    </service-credential>
+
+    <service-credential service-credential-id="reCaptcha.credentials">
+        <url>https://www.google.com/recaptcha/api/siteverify</url>
+        <user-id/>
+        <password masked="true">********</password>
+    </service-credential>
+
+    <service-credential service-credential-id="starwars.deathstar.credentials">
+        <url>https://swapi.dev/api/starships/9/</url>
+        <user-id/>
+        <password masked="true">********</password>
+    </service-credential>
+
+    <service-credential service-credential-id="twilio.credentials">
+        <url>https://api.twilio.com/2010-04-01/Accounts/AC7411db8b0bf477fb9fdd57ae4ad3e85d/Messages.json</url>
+        <user-id>AC7411db8b0bf477fb9fdd57ae4ad3e85d</user-id>
+        <password masked="true">********</password>
+    </service-credential>
+
+    <service-profile service-profile-id="cat.fact.profile">
+        <timeout-millis>2000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service-profile service-profile-id="external.customer.profile">
+        <timeout-millis>2000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service-profile service-profile-id="reCaptcha.profile">
+        <timeout-millis>1000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service-profile service-profile-id="starwars.deathstar.profile">
+        <timeout-millis>2000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service-profile service-profile-id="twilio.profile">
+        <timeout-millis>1000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>true</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+
+    <service service-id="http.catfact.getCatFact">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix/>
+        <comm-log-enabled>false</comm-log-enabled>
+        <force-prd-enabled>false</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>cat.fact.profile</profile-id>
+        <credential-id>cat.fact.credentials</credential-id>
+    </service>
+
+    <service service-id="http.extarnal.customer.data">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>external_data</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>false</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>external.customer.profile</profile-id>
+        <credential-id>external.customer.credentials</credential-id>
+    </service>
+
+    <service service-id="http.reCaptcha.verify">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>reCaptcha</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>true</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>reCaptcha.profile</profile-id>
+        <credential-id>reCaptcha.credentials</credential-id>
+    </service>
+
+    <service service-id="http.starwars.getdeathstar">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>deathstar</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>false</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>starwars.deathstar.profile</profile-id>
+        <credential-id>starwars.deathstar.credentials</credential-id>
+    </service>
+
+    <service service-id="http.twilio.sendMessage">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>twilioMessage</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>true</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>twilio.profile</profile-id>
+        <credential-id>twilio.credentials</credential-id>
+    </service>
+
+</services>
