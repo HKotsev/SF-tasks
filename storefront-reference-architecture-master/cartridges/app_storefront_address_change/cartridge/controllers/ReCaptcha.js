@@ -43,7 +43,9 @@ server.post(
             return next();
         }
 
-        if (response.object.score >= viewData.reCaptcha.threshold) {
+        var t1 = response.object.score;
+        var t2 = viewData.reCaptcha.threshold;
+        if (response.object.score >= viewData.reCaptcha.treshold) {
             res.json({
                 success: true,
             });

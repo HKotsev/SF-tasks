@@ -1,0 +1,5 @@
+<isdecorate template="common/layout/page">
+    <div class="d-flex justify-content-center">
+        <isprint value="${pdict.message}" encoding="on" />
+    </div>
+</isdecorate>
